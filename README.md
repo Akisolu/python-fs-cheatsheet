@@ -10,6 +10,7 @@ This repository contains example scripts and reference documentation showing how
 os_shutil_pathlib/
 ├── README.md                    # This file
 ├── LICENSE
+├── .gitignore
 ├── examples/                    # Demo scripts with identical 13 operations
 │   ├── README.md
 │   ├── os_demo.py

@@ -88,7 +88,7 @@ def main():
         os.rmdir(subdir)
         print("13. Empty folder deleted:", subdir)
 
-        print("\n=== End of os_example ===")
+        print("\n=== End of os_demo ===")
 
 
 if __name__ == "__main__":

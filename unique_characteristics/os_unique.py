@@ -57,6 +57,8 @@ def main():
     with open(demo_file, "w", encoding="utf-8") as f:
         f.write("permission demo")
     print("   Before chmod:", oct(os.stat(demo_file).st_mode & 0o777))
+    # Note: On Windows, os.chmod can only change the read-only attribute,
+    # not full Unix permissions, so the value may not appear to change.
     os.chmod(demo_file, 0o600)
     print("   After chmod 600:", oct(os.stat(demo_file).st_mode & 0o777))
     os.remove(demo_file)

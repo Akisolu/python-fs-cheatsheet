@@ -25,6 +25,7 @@ IMPORTANT LIMITATIONS
   variables, signals) still require ``os``.
 """
 
+import shutil
 import tempfile
 from pathlib import Path
 
@@ -66,7 +67,8 @@ def main():
         print("8. Copy created:", copy_path)
 
         # 8b. Alternative with metadata: shutil.copy2 works with Path objects
-        # shutil.copy2(file_path, copy_path)
+        shutil.copy2(file_path, copy_path)
+        print("   Copy with metadata created:", copy_path)
 
         # 9. Rename / move file
         renamed_path = subdir / "note_renamed.txt"
@@ -89,7 +91,7 @@ def main():
         subdir.rmdir()
         print("13. Empty folder deleted:", subdir)
 
-        print("\n=== End of pathlib_example ===")
+        print("\n=== End of pathlib_demo ===")
 
 
 if __name__ == "__main__":

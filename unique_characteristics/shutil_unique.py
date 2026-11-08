@@ -20,7 +20,6 @@ def main():
 
     with tempfile.TemporaryDirectory() as base:
         src_dir = os.path.join(base, "source_dir")
-        dst_dir = os.path.join(base, "dest_dir")
         os.makedirs(src_dir, exist_ok=True)
 
         # Create a few files inside source_dir
@@ -44,7 +43,10 @@ def main():
         tree_copy = os.path.join(base, "source_dir_copy")
         shutil.copytree(src_dir, tree_copy)
         print("   Tree copied to:", tree_copy)
-        print("   Contains sub/c.txt:", os.path.exists(os.path.join(tree_copy, "sub", "c.txt")))
+        print(
+            "   Contains sub/c.txt:",
+            os.path.exists(os.path.join(tree_copy, "sub", "c.txt")),
+        )
         shutil.rmtree(tree_copy)
 
         # 3. Recursive delete of a directory with content (shutil.rmtree)
@@ -55,6 +57,7 @@ def main():
         print("   source_dir exists after rmtree:", os.path.exists(src_dir))
 
         # 4. Cross-filesystem move (shutil.move handles it; os.rename fails)
+        # We recreate src_dir for the following movement demonstration.
         print("\n4. Cross-filesystem move (shutil.move):")
         os.makedirs(src_dir, exist_ok=True)
         move_src = os.path.join(src_dir, "to_move.txt")
@@ -83,14 +86,19 @@ def main():
         print("\n7. Archive operations (shutil.make_archive / unpack_archive):")
         archive_base = os.path.join(base, "my_archive")
         os.makedirs(os.path.join(src_dir, "archive_inner"), exist_ok=True)
-        with open(os.path.join(src_dir, "archive_inner", "z.txt"), "w", encoding="utf-8") as f:
+        with open(
+            os.path.join(src_dir, "archive_inner", "z.txt"), "w", encoding="utf-8"
+        ) as f:
             f.write("inside archive")
         shutil.make_archive(archive_base, "zip", src_dir)
         print("   Archive created:", archive_base + ".zip")
         extract_dir = os.path.join(base, "extracted")
         shutil.unpack_archive(archive_base + ".zip", extract_dir)
         print("   Extracted to:", extract_dir)
-        print("   Contains archive_inner/z.txt:", os.path.exists(os.path.join(extract_dir, "archive_inner", "z.txt")))
+        print(
+            "   Contains archive_inner/z.txt:",
+            os.path.exists(os.path.join(extract_dir, "archive_inner", "z.txt")),
+        )
 
     print("\n=== End of shutil_unique ===")
 

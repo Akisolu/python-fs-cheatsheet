@@ -23,7 +23,6 @@ IMPORTANT LIMITATIONS
 """
 
 import os
-import os.path
 import shutil
 import tempfile
 
@@ -83,7 +82,7 @@ def main():
         shutil.rmtree(subdir)
         print("12. Folder and content deleted:", subdir)
 
-        print("\n=== End of shutil_example ===")
+        print("\n=== End of shutil_demo ===")
 
 
 if __name__ == "__main__":

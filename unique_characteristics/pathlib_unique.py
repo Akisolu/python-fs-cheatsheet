@@ -29,6 +29,8 @@ def main():
 
         # 2. Pure vs concrete paths (os has no such distinction)
         print("\n2. Pure vs concrete paths:")
+        # Note: On Windows, PurePath("/tmp/...") resolves to a Windows path
+        # (\tmp\some\file.txt), even though it is "pure." It is used here solely as an example.
         pure = PurePath("/tmp/some/file.txt")
         concrete = Path("/tmp/some/file.txt")
         print("   PurePath (manipulation only):", pure)
@@ -53,7 +55,9 @@ def main():
         print("   *.py files:", [p.name for p in py_files])
         # rglob searches recursively
         all_py = list(base_path.rglob("*.py"))
-        print("   **/*.py (recursive):", [str(p.relative_to(base_path)) for p in all_py])
+        print(
+            "   **/*.py (recursive):", [str(p.relative_to(base_path)) for p in all_py]
+        )
 
         # 5. iterdir yields Path objects directly (os.listdir yields strings)
         print("\n5. iterdir yields Path objects:")
