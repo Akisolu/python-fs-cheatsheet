@@ -1,5 +1,5 @@
 """
-pathlib_example.py
+pathlib_demo.py
 ==================
 
 Demonstrates common file-system operations using the ``pathlib`` module

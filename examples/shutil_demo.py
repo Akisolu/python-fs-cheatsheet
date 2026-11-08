@@ -1,5 +1,5 @@
 """
-shutil_example.py
+shutil_demo.py
 =================
 
 Demonstrates common file-system operations using the ``shutil`` module.

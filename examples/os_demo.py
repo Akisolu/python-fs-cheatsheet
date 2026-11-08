@@ -1,5 +1,5 @@
 """
-os_example.py
+os_demo.py
 ==============
 
 Demonstrates common file-system operations using the ``os`` module.
